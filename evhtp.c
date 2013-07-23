@@ -902,16 +902,24 @@ _evhtp_request_parser_header_key(htparser * p, const char * data, size_t len) {
     char               * key_s;     /* = strndup(data, len); */
     evhtp_header_t     * hdr;
 
-    key_s      = malloc(len + 1);
+    key_s = malloc(len + 1);
+    if (key_s == NULL) {
+      return -1;
+    }
+
     key_s[len] = '\0';
     memcpy(key_s, data, len);
 
     if ((hdr = evhtp_header_key_add(c->request->headers_in, key_s, 0)) == NULL) {
         c->request->status = EVHTP_RES_FATAL;
+        free(key_s);
         return -1;
     }
 
     hdr->k_heaped = 1;
+
+    free(key_s);
+
     return 0;
 }
 
