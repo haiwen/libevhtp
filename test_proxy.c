@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
+#include <signal.h>
 #include <errno.h>
 #include <evhtp.h>
 #include <signal.h>
