@@ -251,7 +251,8 @@ endif()
 install (FILES evhtp.h DESTINATION include)
 install (FILES htparse/htparse.h DESTINATION include)
 install (FILES evthr/evthr.h DESTINATION include)
-
+install (FILES oniguruma/onigposix.h DESTINATION include)
+ 
 IF (WIN32)
    install (FILES compat/sys/queue.h DESTINATION include/sys)
    install (FILES oniguruma/onigposix.h DESTINATION include)
